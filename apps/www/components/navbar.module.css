@@ -1,0 +1,34 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  color: var(--foreground);
+  background: var(--background);
+}
+
+.navigation ul {
+  display: flex;
+  list-style: none;
+}
+
+.navigation li {
+  padding-left: 1rem;
+}
+
+.navigation a {
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .navigation {
+    flex-direction: column;
+  }
+  .navigation ul {
+    flex-direction: column;
+    padding-top: 0.5rem;
+  }
+  .navigation li {
+    padding: 0.5rem 0;
+  }
+}

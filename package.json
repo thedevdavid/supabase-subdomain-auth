@@ -5,19 +5,26 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
+    "check-types": "turbo check-types",
+    "typegen": "turbo typegen",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "prettier": "^3.2.5",
-    "turbo": "^2.0.5",
-    "typescript": "^5.4.5"
+    "prettier": "3.3.2",
+    "turbo": "2.0.6",
+    "typescript": "5.5.2"
   },
   "engines": {
-    "node": ">=18"
+    "node": "20.x"
   },
   "packageManager": "bun@1.1.16",
   "workspaces": [
     "apps/*",
     "packages/*"
+  ],
+  "trustedDependencies": [
+    "core-js-pure",
+    "esbuild",
+    "sharp"
   ]
 }
