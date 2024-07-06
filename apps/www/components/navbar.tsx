@@ -12,7 +12,7 @@ export const Navbar = ({ title }: NavbarProps) => {
       <h2>{title}</h2>
       <ul>
         <li>
-          <Link href={process.env.SITE_URL ?? "/"}>Home</Link>
+          <Link href={process.env.NEXT_PUBLIC_SITE_URL ?? "/"}>Home</Link>
         </li>
       </ul>
       <AuthButton />
