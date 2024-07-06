@@ -12,7 +12,7 @@
     "dev": "bun run start",
     "check-types": "tsc --noEmit",
     "typegen": "supabase gen types typescript --local --schema public,auth > src/types/db.ts",
-    "lint": "eslint . --max-warnings 0"
+    "lint": "eslint **/*.{ts,tsx} --max-warnings 0"
   },
   "dependencies": {
     "@supabase/ssr": "0.4.0",
