@@ -1,4 +1,8 @@
-/* eslint-disable turbo/no-undeclared-env-vars */
+const SITE_DOMAIN = process.env.SITE_DOMAIN;
+const APP_URL = process.env.APP_URL;
+const DOCS_DOMAIN = process.env.DOCS_DOMAIN;
+const DOCS_URL = process.env.DOCS_URL;
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   transpilePackages: ["@repo/supabase"],
@@ -10,12 +14,8 @@ const nextConfig = {
           type: "cookie",
           key: "supabase-subdomain-auth",
         },
-        {
-          type: "host",
-          value: process.env.SITE_DOMAIN,
-        },
       ],
-      destination: process.env.APP_URL,
+      destination: APP_URL,
       permanent: false,
     },
     {
@@ -25,57 +25,51 @@ const nextConfig = {
           type: "cookie",
           key: "supabase-subdomain-auth-code-verifier",
         },
-        {
-          type: "host",
-          value: process.env.SITE_DOMAIN,
-        },
       ],
-      destination: process.env.APP_URL,
+      destination: APP_URL,
       permanent: false,
     },
     {
+      source: "/app",
+      destination: `${APP_URL}`,
+      permanent: true,
+    },
+    {
       source: "/app/:path*",
-      has: [
-        {
-          type: "host",
-          value: process.env.SITE_DOMAIN,
-        },
-      ],
-      destination: `${process.env.APP_URL}/:path*`,
+      destination: `${APP_URL}/:path*`,
+      permanent: true,
+    },
+    {
+      source: "/auth",
+      destination: `${APP_URL}/auth`,
       permanent: true,
     },
     {
       source: "/auth/:path*",
-      has: [
-        {
-          type: "host",
-          value: process.env.SITE_DOMAIN,
-        },
-      ],
-      destination: `${process.env.APP_URL}/auth/:path*`,
+      destination: `${APP_URL}/auth/:path*`,
       permanent: true,
     },
     {
-      source: `/docs`,
-      has: [
+      source: "/docs",
+      missing: [
         {
           type: "host",
-          value: process.env.SITE_DOMAIN,
+          value: DOCS_DOMAIN,
         },
       ],
-      destination: `${process.env.DOCS_URL}`,
-      permanent: false,
+      destination: `${DOCS_URL}`,
+      permanent: true,
     },
     {
-      source: `/docs/:path*`,
-      has: [
+      source: "/docs/:path*",
+      missing: [
         {
           type: "host",
-          value: process.env.SITE_DOMAIN,
+          value: DOCS_DOMAIN,
         },
       ],
-      destination: `${process.env.DOCS_URL}/:path*`,
-      permanent: false,
+      destination: `${DOCS_URL}/:path*`,
+      permanent: true,
     },
   ],
   rewrites: async () => {
@@ -83,44 +77,28 @@ const nextConfig = {
       beforeFiles: [
         {
           source: "/",
-          missing: [
-            {
-              type: "cookie",
-              key: "supabase-subdomain-auth",
-            },
-          ],
           destination: "/home",
         },
-        {
-          source: "/",
-          missing: [
-            {
-              type: "cookie",
-              key: "supabase-subdomain-auth-code-verifier",
-            },
-          ],
-          destination: "/home",
-        },
-        {
-          source: `/`,
-          has: [
-            {
-              type: "host",
-              value: process.env.DOCS_DOMAIN,
-            },
-          ],
-          destination: `/docs`,
-        },
-        {
-          source: `/:path*`,
-          has: [
-            {
-              type: "host",
-              value: process.env.DOCS_DOMAIN,
-            },
-          ],
-          destination: `/docs/:path*`,
-        },
+        // {
+        //   source: `/`,
+        //   has: [
+        //     {
+        //       type: "host",
+        //       value: process.env.DOCS_DOMAIN,
+        //     },
+        //   ],
+        //   destination: `/docs`,
+        // },
+        // {
+        //   source: `/:path*`,
+        //   has: [
+        //     {
+        //       type: "host",
+        //       value: process.env.DOCS_DOMAIN,
+        //     },
+        //   ],
+        //   destination: `/docs/:path*`,
+        // },
       ],
     };
   },

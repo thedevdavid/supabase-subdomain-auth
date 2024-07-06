@@ -6,8 +6,10 @@
     "./utils/cookies": "./src/utils/cookies.ts"
   },
   "scripts": {
-    "db:start": "supabase start",
-    "dev": "bun db:start",
+    "build": "bun run check-types && bun run start && bun run typegen",
+    "start": "supabase start",
+    "stop": "supabase stop",
+    "dev": "bun run start",
     "check-types": "tsc --noEmit",
     "typegen": "supabase gen types typescript --local --schema public,auth > src/types/db.ts",
     "lint": "eslint . --max-warnings 0"
@@ -24,6 +26,6 @@
     "@supabase/supabase-js": "2.44.2",
     "eslint": "8.57.0",
     "next": "15.0.0-rc.0",
-    "typescript": "5.5.2"
+    "typescript": "5.5.3"
   }
 }

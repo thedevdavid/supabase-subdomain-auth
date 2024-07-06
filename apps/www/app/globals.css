@@ -33,6 +33,17 @@ a {
   text-decoration: none;
 }
 
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  color: var(--foreground);
+  background: var(--background);
+  height: 60px;
+  width: 100%;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

@@ -2,28 +2,32 @@
 const nextConfig = {
   redirects: async () => [
     {
-      source: "/dashboard",
-      missing: [
+      source: "/auth/:path*",
+      has: [
         {
           type: "cookie",
           key: "supabase-subdomain-auth",
         },
       ],
-      destination: "/login",
-      permanent: false,
-    },
-    {
-      source: "/dashboard/:path*",
-      missing: [
-        {
-          type: "cookie",
-          key: "supabase-subdomain-auth",
-        },
-      ],
-      destination: "/login",
+      destination: "/",
       permanent: false,
     },
   ],
+  rewrites: async () => {
+    return {
+      beforeFiles: [
+        {
+          source: "/auth",
+          destination: "/auth/login",
+        },
+        {
+          source:
+            "/:path((?!auth|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+          destination: "/dashboard/:path*",
+        },
+      ],
+    };
+  },
 };
 
 export default nextConfig;

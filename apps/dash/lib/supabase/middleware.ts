@@ -39,7 +39,7 @@ export async function updateSession(request: NextRequest) {
 
   if (!user) {
     // no user, potentially respond by redirecting the user to the login page
-    return NextResponse.redirect("/login");
+    return NextResponse.redirect("/auth/login");
   }
 
   // IMPORTANT: You *must* return the supabaseResponse object as it is. If you're

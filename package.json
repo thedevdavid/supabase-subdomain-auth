@@ -2,6 +2,8 @@
   "name": "supabase-subdomain-auth",
   "private": true,
   "scripts": {
+    "start:db": "turbo start --filter=@repo/supabase",
+    "stop:db": "turbo stop --filter=@repo/supabase",
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
@@ -12,12 +14,12 @@
   "devDependencies": {
     "prettier": "3.3.2",
     "turbo": "2.0.6",
-    "typescript": "5.5.2"
+    "typescript": "5.5.3"
   },
   "engines": {
     "node": "20.x"
   },
-  "packageManager": "bun@1.1.16",
+  "packageManager": "bun@1.1.17",
   "workspaces": [
     "apps/*",
     "packages/*"

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { createClient } from "../lib/supabase/server";
-import { redirect } from "next/navigation";
+import { signOut } from "../actions/auth";
 
 export async function SignOutButton() {
   const supabase = createClient();
@@ -9,17 +9,9 @@ export async function SignOutButton() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const signOut = async () => {
-    "use server";
-
-    const supabase = createClient();
-    await supabase.auth.signOut();
-    return redirect("/");
-  };
-
   if (!user) {
     return (
-      <Link href="/login">
+      <Link href="/auth/login">
         <button>Sign in</button>
       </Link>
     );
@@ -28,7 +20,9 @@ export async function SignOutButton() {
   return (
     <div>
       <p>Hello {user.email}</p>
-      <button formAction={signOut}>Sign Out</button>
+      <form>
+        <button formAction={signOut}>Sign Out</button>
+      </form>
     </div>
   );
 }

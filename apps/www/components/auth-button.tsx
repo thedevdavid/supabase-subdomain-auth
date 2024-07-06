@@ -20,7 +20,7 @@ export async function AuthButton() {
 
   if (!user) {
     return (
-      <Link href="/app/login">
+      <Link href="/app/auth">
         <button>Sign in</button>
       </Link>
     );
@@ -29,7 +29,9 @@ export async function AuthButton() {
   return (
     <div className={styles.authenticated}>
       <p>Hello {user.email}</p>
-      <button formAction={signOut}>Sign Out</button>
+      <form>
+        <button formAction={signOut}>Sign Out</button>
+      </form>
     </div>
   );
 }

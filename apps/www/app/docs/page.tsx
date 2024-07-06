@@ -1,7 +1,7 @@
 export default function DocsPage() {
   return (
     <div>
-      <h1>Docs Page in same Next.js app</h1>
+      <h1>Docs Page in marketing site Next.js app</h1>
     </div>
   );
 }
