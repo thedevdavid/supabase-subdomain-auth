@@ -6,7 +6,7 @@
     "./utils/cookies": "./src/utils/cookies.ts"
   },
   "scripts": {
-    "build": "bun run check-types && bun run start && bun run typegen",
+    "build:db": "bun run check-types && bun run start && bun run typegen",
     "start": "supabase start",
     "stop": "supabase stop",
     "dev": "bun run start",
@@ -21,7 +21,7 @@
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
-    "@types/node": "20.14.9",
+    "@types/node": "20.14.10",
     "@types/eslint": "8.56.10",
     "@supabase/supabase-js": "2.44.2",
     "eslint": "8.57.0",

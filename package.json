@@ -4,6 +4,7 @@
   "scripts": {
     "start:db": "turbo start --filter=@repo/supabase",
     "stop:db": "turbo stop --filter=@repo/supabase",
+    "build:db": "turbo build:db --filter=@repo/supabase",
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
