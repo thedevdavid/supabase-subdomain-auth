@@ -1,4 +1,3 @@
-const SITE_DOMAIN = process.env.SITE_DOMAIN;
 const APP_URL = process.env.APP_URL;
 const DOCS_DOMAIN = process.env.DOCS_DOMAIN;
 const DOCS_URL = process.env.DOCS_URL;
