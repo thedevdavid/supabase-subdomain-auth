@@ -11,7 +11,7 @@ export async function SignOutButton() {
 
   if (!user) {
     return (
-      <Link href="/auth/login">
+      <Link href="/app/auth/login">
         <button>Sign in</button>
       </Link>
     );

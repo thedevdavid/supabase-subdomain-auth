@@ -22,11 +22,15 @@ export async function updateSession(request: NextRequest) {
         return request.cookies.getAll();
       },
       setAll(cookiesToSet) {
-        cookiesToSet.forEach((c) => request.cookies.set(c));
+        cookiesToSet.forEach(({ name, value, options }) =>
+          request.cookies.set(name, value)
+        );
         supabaseResponse = NextResponse.next({
           request,
         });
-        cookiesToSet.forEach((c) => supabaseResponse.cookies.set(c));
+        cookiesToSet.forEach(({ name, value, options }) =>
+          supabaseResponse.cookies.set(name, value, options)
+        );
       },
     },
   });
@@ -37,10 +41,10 @@ export async function updateSession(request: NextRequest) {
 
   const { data: user, error } = await supabase.auth.getUser();
 
-  if (!user) {
-    // no user, potentially respond by redirecting the user to the login page
-    return NextResponse.redirect("/auth/login");
-  }
+  // if (error || !user) {
+  //   // no user, potentially respond by redirecting the user to the login page
+  //   return NextResponse.redirect("/app/signin");
+  // }
 
   // IMPORTANT: You *must* return the supabaseResponse object as it is. If you're
   // creating a new response object with NextResponse.next() make sure to:

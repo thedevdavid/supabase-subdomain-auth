@@ -10,6 +10,8 @@
     "lint": "turbo lint",
     "check-types": "turbo check-types",
     "typegen": "turbo typegen",
+    "test": "turbo run test",
+    "test:watch": "turbo run test:watch",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {

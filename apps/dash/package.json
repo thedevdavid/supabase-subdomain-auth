@@ -15,18 +15,18 @@
     "@supabase/ssr": "0.4.0",
     "@supabase/supabase-js": "2.44.3",
     "babel-plugin-react-compiler": "0.0.0-experimental-938cd9a-20240601",
+    "next": "15.0.0-canary.66",
     "react": "19.0.0-rc-6230622a1a-20240610",
-    "react-dom": "19.0.0-rc-6230622a1a-20240610",
-    "next": "15.0.0-canary.65"
+    "react-dom": "19.0.0-rc-6230622a1a-20240610"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
-    "typescript": "5.5.3",
     "@types/node": "20.14.10",
     "@types/react": "npm:types-react@19.0.0-rc.0",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.0",
     "eslint": "8.57.0",
-    "eslint-config-next": "15.0.0-canary.65"
+    "eslint-config-next": "15.0.0-canary.66",
+    "typescript": "5.5.3"
   }
 }
