@@ -67,10 +67,10 @@ const nextConfig: NextConfig = {
     ];
   },
   rewrites: async () => {
-    const APP_URL = getEnvVariable("APP_URL");
-    const DOCS_DOMAIN = getEnvVariable("DOCS_DOMAIN");
-    const DOCS_URL = getEnvVariable("DOCS_URL");
-    const SITE_DOMAIN = getEnvVariable("SITE_DOMAIN");
+    const APP_URL = getEnvVariable("NEXT_PUBLIC_APP_URL");
+    const DOCS_DOMAIN = getEnvVariable("NEXT_PUBLIC_DOCS_DOMAIN");
+    const DOCS_URL = getEnvVariable("NEXT_PUBLIC_DOCS_URL");
+    const SITE_DOMAIN = getEnvVariable("NEXT_PUBLIC_SITE_DOMAIN");
 
     console.log("Environment variables inside rewrites:", {
       APP_URL,
