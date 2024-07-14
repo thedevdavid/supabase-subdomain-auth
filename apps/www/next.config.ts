@@ -23,8 +23,8 @@ const nextConfig: NextConfig = {
   },
   transpilePackages: ["@repo/supabase"],
   redirects: async () => {
-    const APP_URL = getEnvVariable("APP_URL");
-    const DOCS_URL = getEnvVariable("DOCS_URL");
+    const APP_URL = getEnvVariable("NEXT_PUBLIC_APP_URL");
+    const DOCS_URL = getEnvVariable("NEXT_PUBLIC_DOCS_URL");
 
     return [
       {
