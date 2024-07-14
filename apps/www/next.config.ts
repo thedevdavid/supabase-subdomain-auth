@@ -70,11 +70,6 @@ const nextConfig: NextConfig = {
     });
     return [
       {
-        source: "/:path*",
-        has: [{ type: "host", value: DOCS_DOMAIN }],
-        destination: "/docs/:path*",
-      },
-      {
         source: "/",
         destination: "/home",
       },
