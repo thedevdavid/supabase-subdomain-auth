@@ -10,10 +10,10 @@ const getEnvVariable = (key: string): string => {
 };
 
 console.log("Environment variables:", {
-  APP_URL: process.env.APP_URL,
-  DOCS_DOMAIN: process.env.DOCS_DOMAIN,
-  DOCS_URL: process.env.DOCS_URL,
-  SITE_DOMAIN: process.env.SITE_DOMAIN,
+  APP_URL: process.env.NEXT_PUBLIC_APP_URL,
+  DOCS_DOMAIN: process.env.NEXT_PUBLIC_DOCS_DOMAIN,
+  DOCS_URL: process.env.NEXT_PUBLIC_DOCS_URL,
+  SITE_DOMAIN: process.env.NEXT_PUBLIC_SITE_DOMAIN,
 });
 
 const nextConfig: NextConfig = {
