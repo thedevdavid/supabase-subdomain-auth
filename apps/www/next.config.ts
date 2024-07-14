@@ -35,7 +35,7 @@ const nextConfig: NextConfig = {
             key: COOKIE_NAME,
           },
         ],
-        destination: `${APP_URL}/app`,
+        destination: `${APP_URL}`,
         permanent: false,
       },
       {
@@ -46,12 +46,22 @@ const nextConfig: NextConfig = {
             key: `${COOKIE_NAME}-code-verifier`,
           },
         ],
-        destination: `${APP_URL}/app`,
+        destination: `${APP_URL}`,
         permanent: false,
       },
       {
         source: "/docs/:path*",
         destination: `${DOCS_URL}/:path*`,
+        permanent: false,
+      },
+      {
+        source: "/app/:path*",
+        destination: `${APP_URL}/:path*`,
+        permanent: false,
+      },
+      {
+        source: "/auth/:path*",
+        destination: `${APP_URL}/auth/:path*`,
         permanent: false,
       },
     ];
@@ -72,22 +82,6 @@ const nextConfig: NextConfig = {
       {
         source: "/",
         destination: "/home",
-      },
-      {
-        source: "/app",
-        destination: `${APP_URL}/app`,
-      },
-      {
-        source: "/app/:path+",
-        destination: `${APP_URL}/app/:path+`,
-      },
-      {
-        source: "/auth",
-        destination: `${APP_URL}/app/auth`,
-      },
-      {
-        source: "/auth/:path+",
-        destination: `${APP_URL}/app/auth/:path+`,
       },
     ];
   },

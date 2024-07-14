@@ -13,7 +13,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Dashboard - Supabase subdomain auth example",
+  title: "App - Supabase subdomain auth example",
   description:
     "Example of subdomain auth with Next.js cookie-based apex domain redirect",
 };

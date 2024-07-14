@@ -11,16 +11,13 @@ export default function Home() {
           free features of the app without requiring authentication.
         </p>
         <p>
-          To make the entire app private, you need to extend the rewrites in{" "}
+          To make the entire app private, you need to remove{" "}
+          <code>apps/dash/app/page.tsx</code>, and extend the rewrites in{" "}
           <code>apps/dash/next.config.mjs</code> with:
         </p>
         <pre>
           <code>
             {`
-            {
-              source: "/",
-              destination: "/dashboard",
-            },
             {
               source: "/:path*",
               destination: "/dashboard/:path*",
