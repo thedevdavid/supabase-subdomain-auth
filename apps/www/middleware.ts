@@ -2,19 +2,24 @@ import { NextResponse, type NextRequest } from "next/server";
 import { updateSession } from "./lib/supabase/middleware";
 
 export async function middleware(request: NextRequest) {
-  // return await updateSession(request);
   const supabaseResponse = await updateSession(request);
 
-  const url = request.nextUrl;
-  const hostname = request.headers.get("host") || "";
-
   // Handle docs subdomain
+  const hostname = request.headers.get("host") || "";
   if (hostname.startsWith("docs.")) {
+    const url = request.nextUrl;
     // Already on docs subdomain, just remove the /docs prefix if present
     if (url.pathname.startsWith("/docs")) {
       url.pathname = url.pathname.replace("/docs", "");
     }
-    return NextResponse.rewrite(new URL(`/docs${url.pathname}`, request.url));
+
+    const res = NextResponse.rewrite(
+      new URL(`/docs${url.pathname}`, request.url),
+      { request }
+    );
+    const supacookies = supabaseResponse.cookies.getAll();
+    supacookies.forEach((c) => res.cookies.set(c));
+    return res;
   }
 
   // Also handle /docs redirects here instead of in next.config.mjs

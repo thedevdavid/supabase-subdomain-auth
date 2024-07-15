@@ -13,10 +13,11 @@
   "dependencies": {
     "@repo/supabase": "*",
     "@repo/ui": "*",
+    "@repo/utils": "*",
     "@supabase/ssr": "0.4.0",
-    "@supabase/supabase-js": "2.44.3",
+    "@supabase/supabase-js": "2.44.4",
     "babel-plugin-react-compiler": "0.0.0-experimental-938cd9a-20240601",
-    "next": "15.0.0-canary.66",
+    "next": "15.0.0-canary.67",
     "react": "19.0.0-rc-6230622a1a-20240610",
     "react-dom": "19.0.0-rc-6230622a1a-20240610"
   },
@@ -27,7 +28,7 @@
     "@types/react": "npm:types-react@19.0.0-rc.0",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.0",
     "eslint": "8.57.0",
-    "eslint-config-next": "15.0.0-canary.66",
+    "eslint-config-next": "15.0.0-canary.67",
     "jest": "29.7.0",
     "path-to-regexp": "6.2.1",
     "typescript": "5.5.3"

@@ -1,5 +1,5 @@
-import { COOKIE_NAME } from "@repo/supabase/utils/cookies";
 import { NextConfig } from "next";
+import { getEnvVariable } from "@repo/utils/getEnvVariable";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -13,56 +13,61 @@ const nextConfig: NextConfig = {
     // manualClientBasePath: true,
   },
   // basePath: "/app",
-  redirects: async () => [
-    {
-      source: "/auth/:path*",
-      has: [
-        {
-          type: "cookie",
-          key: "appname:session",
-        },
-      ],
-      destination: "/",
-      permanent: false,
-    },
-    {
-      source: "/",
-      has: [
-        {
-          type: "cookie",
-          key: COOKIE_NAME,
-        },
-      ],
-      destination: "/dashboard",
-      permanent: false,
-    },
-    {
-      source: "/dashboard/:path*",
-      missing: [
-        {
-          type: "cookie",
-          key: COOKIE_NAME,
-        },
-      ],
-      destination: "/auth/login",
-      permanent: false,
-    },
-    {
-      source: "/auth",
-      destination: "/auth/login",
-      permanent: true,
-    },
-    {
-      source: "/login",
-      destination: "/auth/login",
-      permanent: true,
-    },
-    {
-      source: "/signin",
-      destination: "/auth/login",
-      permanent: true,
-    },
-  ],
+  transpilePackages: ["@repo/supabase", "@repo/utils"],
+  redirects: async () => {
+    const COOKIE_NAME = getEnvVariable(process.env, "NEXT_PUBLIC_COOKIE_NAME");
+
+    return [
+      {
+        source: "/auth/:path*",
+        has: [
+          {
+            type: "cookie",
+            key: COOKIE_NAME,
+          },
+        ],
+        destination: "/",
+        permanent: false,
+      },
+      {
+        source: "/",
+        has: [
+          {
+            type: "cookie",
+            key: COOKIE_NAME,
+          },
+        ],
+        destination: "/dashboard",
+        permanent: false,
+      },
+      {
+        source: "/dashboard/:path*",
+        missing: [
+          {
+            type: "cookie",
+            key: COOKIE_NAME,
+          },
+        ],
+        destination: "/auth/login",
+        permanent: false,
+      },
+      {
+        source: "/auth",
+        destination: "/auth/login",
+        permanent: true,
+      },
+      {
+        source: "/login",
+        destination: "/auth/login",
+        permanent: true,
+      },
+      {
+        source: "/signin",
+        destination: "/auth/login",
+        permanent: true,
+      },
+    ];
+  },
   rewrites: async () => {
     return [
       {
@@ -71,26 +76,26 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  // headers: async () => {
-  //   return [
-  //     {
-  //       source: "/:path*",
-  //       headers: [
-  //         { key: "Access-Control-Allow-Credentials", value: "true" },
-  //         { key: "Access-Control-Allow-Origin", value: "*" },
-  //         {
-  //           key: "Access-Control-Allow-Methods",
-  //           value: "GET,OPTIONS,PATCH,DELETE,POST,PUT",
-  //         },
-  //         {
-  //           key: "Access-Control-Allow-Headers",
-  //           value:
-  //             "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
-  //         },
-  //       ],
-  //     },
-  //   ];
-  // },
+  headers: async () => {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "Access-Control-Allow-Credentials", value: "true" },
+          { key: "Access-Control-Allow-Origin", value: "*" },
+          {
+            key: "Access-Control-Allow-Methods",
+            value: "GET,OPTIONS,PATCH,DELETE,POST,PUT",
+          },
+          {
+            key: "Access-Control-Allow-Headers",
+            value:
+              "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

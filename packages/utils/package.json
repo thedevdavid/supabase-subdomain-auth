@@ -1,0 +1,23 @@
+{
+  "name": "@repo/utils",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./getEnvVariable": "./src/get-env-variable.ts",
+    "./nuke-cookies": "./src/nuke-cookies.ts"
+  },
+  "scripts": {
+    "lint": "eslint **/*.{ts,tsx} --max-warnings 0"
+  },
+  "dependencies": {
+    "next": "15.0.0-canary.67"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@types/node": "20.14.10",
+    "@types/eslint": "8.56.10",
+    "eslint": "8.57.0",
+    "typescript": "5.5.3"
+  }
+}

@@ -1,30 +1,16 @@
-import { COOKIE_NAME } from "@repo/supabase/utils/cookies";
 import { NextConfig } from "next";
-
-const getEnvVariable = (key: string): string => {
-  const value = process.env[key];
-  if (!value) {
-    throw new Error(`Missing environment variable: ${key}`);
-  }
-  return value;
-};
-
-console.log("Environment variables:", {
-  APP_URL: process.env.NEXT_PUBLIC_APP_URL,
-  DOCS_DOMAIN: process.env.NEXT_PUBLIC_DOCS_DOMAIN,
-  DOCS_URL: process.env.NEXT_PUBLIC_DOCS_URL,
-  SITE_DOMAIN: process.env.NEXT_PUBLIC_SITE_DOMAIN,
-});
+import { getEnvVariable } from "@repo/utils/getEnvVariable";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   experimental: {
     reactCompiler: true,
   },
-  transpilePackages: ["@repo/supabase"],
+  transpilePackages: ["@repo/supabase", "@repo/utils"],
   redirects: async () => {
-    const APP_URL = getEnvVariable("NEXT_PUBLIC_APP_URL");
-    const DOCS_URL = getEnvVariable("NEXT_PUBLIC_DOCS_URL");
+    const APP_URL = getEnvVariable(process.env, "NEXT_PUBLIC_APP_URL");
+    const DOCS_URL = getEnvVariable(process.env, "NEXT_PUBLIC_DOCS_URL");
+    const COOKIE_NAME = getEnvVariable(process.env, "NEXT_PUBLIC_COOKIE_NAME");
 
     return [
       {
@@ -52,32 +38,21 @@ const nextConfig: NextConfig = {
       {
         source: "/docs/:path*",
         destination: `${DOCS_URL}/:path*`,
-        permanent: false,
+        permanent: true,
       },
       {
         source: "/app/:path*",
         destination: `${APP_URL}/:path*`,
-        permanent: false,
+        permanent: true,
       },
       {
         source: "/auth/:path*",
         destination: `${APP_URL}/auth/:path*`,
-        permanent: false,
+        permanent: true,
       },
     ];
   },
   rewrites: async () => {
-    const APP_URL = getEnvVariable("NEXT_PUBLIC_APP_URL");
-    const DOCS_DOMAIN = getEnvVariable("NEXT_PUBLIC_DOCS_DOMAIN");
-    const DOCS_URL = getEnvVariable("NEXT_PUBLIC_DOCS_URL");
-    const SITE_DOMAIN = getEnvVariable("NEXT_PUBLIC_SITE_DOMAIN");
-
-    console.log("Environment variables inside rewrites:", {
-      APP_URL,
-      DOCS_DOMAIN,
-      DOCS_URL,
-      SITE_DOMAIN,
-    });
     return [
       {
         source: "/",

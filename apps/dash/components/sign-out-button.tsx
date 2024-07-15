@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { createClient } from "../lib/supabase/server";
-import { signOut } from "../actions/auth";
+import { signout } from "../actions/auth";
 
 export async function SignOutButton() {
   const supabase = createClient();
@@ -21,7 +21,9 @@ export async function SignOutButton() {
     <div>
       <p>Hello {user.email}</p>
       <form>
-        <button formAction={signOut}>Sign Out</button>
+        <button formAction={signout} type="submit">
+          Sign Out
+        </button>
       </form>
     </div>
   );
