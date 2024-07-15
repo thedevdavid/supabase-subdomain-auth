@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
   redirects: async () => {
     const APP_URL = getEnvVariable(process.env, "NEXT_PUBLIC_APP_URL");
     const DOCS_URL = getEnvVariable(process.env, "NEXT_PUBLIC_DOCS_URL");
-    const SITE_DOMAIN = getEnvVariable(process.env, "NEXT_PUBLIC_SITE_DOMAIN");
+    const DOCS_DOMAIN = getEnvVariable(process.env, "NEXT_PUBLIC_DOCS_DOMAIN");
     const COOKIE_NAME = getEnvVariable(process.env, "NEXT_PUBLIC_COOKIE_NAME");
 
     return [
@@ -21,9 +21,11 @@ const nextConfig: NextConfig = {
             type: "cookie",
             key: COOKIE_NAME,
           },
+        ],
+        missing: [
           {
             type: "host",
-            value: SITE_DOMAIN,
+            value: DOCS_DOMAIN,
           },
         ],
         destination: `${APP_URL}`,
@@ -36,9 +38,11 @@ const nextConfig: NextConfig = {
             type: "cookie",
             key: `${COOKIE_NAME}-code-verifier`,
           },
+        ],
+        missing: [
           {
             type: "host",
-            value: SITE_DOMAIN,
+            value: DOCS_DOMAIN,
           },
         ],
         destination: `${APP_URL}`,
