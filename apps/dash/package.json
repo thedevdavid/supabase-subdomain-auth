@@ -16,7 +16,6 @@
     "@supabase/ssr": "0.4.0",
     "@supabase/supabase-js": "2.44.4",
     "babel-plugin-react-compiler": "0.0.0-experimental-938cd9a-20240601",
-    "js-cookie": "3.0.5",
     "next": "15.0.0-canary.67",
     "react": "19.0.0-rc-6230622a1a-20240610",
     "react-dom": "19.0.0-rc-6230622a1a-20240610"
@@ -24,7 +23,6 @@
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
-    "@types/js-cookie": "3.0.6",
     "@types/node": "20.14.10",
     "@types/react": "npm:types-react@19.0.0-rc.0",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.0",
