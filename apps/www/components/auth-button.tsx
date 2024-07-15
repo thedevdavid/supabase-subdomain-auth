@@ -20,7 +20,7 @@ export async function AuthButton() {
 
   if (!user) {
     return (
-      <Link href="/app/auth">
+      <Link prefetch={false} href="/app/auth">
         <button>Sign in</button>
       </Link>
     );
