@@ -10,12 +10,12 @@
     "lint": "eslint **/*.{ts,tsx} --max-warnings 0"
   },
   "dependencies": {
-    "next": "15.0.0-canary.67"
+    "next": "15.0.0-canary.70"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
-    "@types/node": "20.14.10",
+    "@types/node": "20.14.11",
     "@types/eslint": "8.56.10",
     "eslint": "8.57.0",
     "typescript": "5.5.3"
