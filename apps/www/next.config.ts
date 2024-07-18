@@ -1,4 +1,4 @@
-import { NextConfig } from "next";
+import type { NextConfig } from "next";
 import { getEnvVariable } from "@repo/utils/getEnvVariable";
 
 const nextConfig: NextConfig = {
